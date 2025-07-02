@@ -1,0 +1,510 @@
+
+/*=============== VARIABLES ===============*/
+:root {
+  --clr-primary: #e66060;
+  --clr-primary-dark: #d82b2b;
+  --clr-light-gray: #f0f0f0;
+  --clr-dark-bg: #000;
+  --clr-dark-grad: radial-gradient(circle at top, #333, #000);
+  --ff-base: 'Poppins', sans-serif;
+  --fs-h1: 5rem;
+  --fs-h2: 3rem;
+  --fs-body: 1.6rem;
+}
+
+/*=============== BASE STYLES ===============*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--ff-base);
+}
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+body {
+  color: #333;
+  background: #fff;
+  line-height: 1.6;
+}
+
+/*=============== SCROLL TO TOP BUTTON ===============*/
+.fa {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 5rem;
+  height: 5rem;
+  background: var(--clr-primary);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, .3);
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: all .4s ease;
+  z-index: 1000;
+}
+.fa.active {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/*=============== NAVIGATION ===============*/
+.navBar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  box-shadow: 0 0 .5rem rgba(0,0,0,.2);
+  z-index: 2000;
+}
+.navBar .logo h1 {
+  font-size: 2.4rem;
+  letter-spacing: .3rem;
+  color: var(--clr-primary-dark);
+}
+.navBar__menu ul {
+  display: flex;
+  list-style: none;
+}
+.navBar__menu li + li {
+  margin-left: 3rem;
+}
+.navBar__menu a {
+  position: relative;
+  font-size: 1.6rem;
+  color: #333;
+  text-decoration: none;
+  padding-bottom: .5rem;
+  transition: color .3s;
+}
+.navBar__menu a::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0;
+  height: .4rem;
+  background: var(--clr-primary);
+  border-radius: 1rem;
+  transition: width .4s;
+}
+.navBar__menu a:hover::before {
+  width: 100%;
+}
+.navBar__menu a:hover {
+  color: var(--clr-primary);
+}
+
+/*=============== MOBILE MENU ===============*/
+.sec1__menuIcon {
+  display: none;
+  width: 3rem;
+  height: 3rem;
+  background: url('https://i.ibb.co/ccyJDPg/icons8-menu-24.png') no-repeat center/contain;
+  cursor: pointer;
+}
+.sec1__menuIcon.active {
+  background: url('https://i.ibb.co/G9TDqVj/icons8-macos-close-32.png') no-repeat center/contain;
+}
+.menuBar {
+  position: fixed;
+  top: 0; left: 100%;
+  width: 80%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,.6);
+  transition: left .5s ease;
+  z-index: 1999;
+}
+.menuBar.active {
+  left: 20%;
+}
+.menuBar ul {
+  padding-top: 8rem;
+  list-style: none;
+  text-align: center;
+}
+.menuBar li {
+  margin: 3rem 0;
+}
+.menuBar a {
+  display: inline-block;
+  font-size: 2.2rem;
+  color: #fff;
+  background: var(--clr-primary);
+  padding: 1.5rem 4rem;
+  border-radius: 3rem;
+  box-shadow: 0 0 1rem rgba(0,0,0,.3);
+  text-decoration: none;
+  transition: background .4s, color .4s;
+}
+.menuBar a:hover {
+  background: #fff;
+  color: var(--clr-primary);
+}
+
+/*=============== SECTION HERO ===============*/
+.sec1 {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 5rem;
+  border-bottom: .1rem solid #eee;
+}
+.sec1__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 5rem;
+}
+.sec1__content h1 {
+  font-size: var(--fs-h1);
+  font-weight: 900;
+  color: #333;
+  margin-bottom: 2rem;
+  text-transform: capitalize;
+  line-height: 1.1;
+}
+.sec1__content h1 span {
+  color: var(--clr-primary);
+}
+.sec1__content a {
+  display: inline-block;
+  margin-top: 2rem;
+  background: var(--clr-primary);
+  color: #fff;
+  padding: 1.2rem 3rem;
+  font-size: 1.8rem;
+  border-radius: 1.2rem;
+  box-shadow: 0 0 1rem rgba(0,0,0,.2);
+  transition: transform .4s, background .4s;
+}
+.sec1__content a:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: var(--clr-primary-dark);
+}
+
+/*=============== HERO IMAGE & ORNAMENTS ===============*/
+.sec1__imgBx {
+  position: relative;
+  width: 50rem;
+  max-width: 100%;
+}
+.sec1__imgBx img {
+  width: 100%;
+  display: block;
+  border-radius: .8rem;
+  box-shadow: 0 0 2rem rgba(0,0,0,.3);
+}
+
+/* Add subtle animations to ornaments */
+.sec1__design1,
+.sec1__design2,
+.sec1__design3,
+.sec1__design4 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(6px);
+}
+.sec1__design1 {
+  top: 0; left: 0;
+  width: 10rem; height: 10rem;
+  background: var(--clr-primary);
+  animation: moveX 4s ease-in-out infinite alternate;
+}
+.sec1__design2 {
+  bottom: 2rem; right: 0;
+  width: 10rem; height: 10rem;
+  background: var(--clr-primary-dark);
+  animation: rotateY 6s linear infinite;
+}
+.sec1__design3 {
+  top: 50%; left: 50%;
+  width: 100%; height: 100%;
+  background: var(--clr-primary);
+  opacity: .1;
+  border-radius: 50%;
+}
+.sec1__design4 {
+  top: 40%; left: -10%;
+  width: 40%; height: 40%;
+  background: var(--clr-primary-dark);
+  animation: floatY 3s ease-in-out infinite;
+}
+@keyframes moveX {
+  from { transform: translateX(0); }
+  to { transform: translateX(2rem); }
+}
+@keyframes rotateY {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3rem); }
+}
+
+/*=============== SECTIONS 2–4: GRIDS & TYPOGRAPHY ===============*/
+section {
+  padding: 8rem 0;
+}
+.sec2 {
+  background: var(--clr-light-gray);
+  border-bottom: .2rem solid #ddd;
+}
+.sec2__heading h2 {
+  font-size: var(--fs-h1);
+  margin-bottom: 2rem;
+  position: relative;
+}
+.sec2__heading h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 100%;
+  height: .2rem;
+  background: var(--clr-primary);
+}
+
+/* Grid layout */
+.sec2__container,
+.sec4__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 4rem;
+  padding: 0 5rem;
+}
+.sec2__aboutme1 {
+  text-align: center;
+}
+.sec2__aboutme1Img {
+  width: 12rem;
+  height: 12rem;
+  border: .4rem solid var(--clr-primary);
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 2rem;
+  transition: transform .4s;
+}
+.sec2__aboutme1Img:hover { transform: scale(1.1); }
+
+/* Typography */
+.sec2__aboutme1 h2 {
+  font-size: var(--fs-h2);
+  margin-bottom: 1.5rem;
+}
+
+/* Social icons */
+.sec2__aboutme1Social a {
+  font-size: 3.2rem;
+  color: #333;
+  margin: 0 1rem;
+  transition: transform .3s, color .3s;
+}
+.sec2__aboutme1Social a:hover {
+  transform: translateY(-5px);
+  color: var(--clr-primary);
+}
+
+/* Text block */
+.sec2__aboutme2 p {
+  font-size: var(--fs-body);
+  line-height: 1.8;
+}
+
+/*=============== SKILLS Section ===============*/
+.sec3 {
+  background: var(--clr-dark-grad);
+  color: #fff;
+  text-align: center;
+}
+.sec3 h1 {
+  font-size: var(--fs-h1);
+  margin-bottom: 3rem;
+  border-bottom: .2rem solid var(--clr-primary);
+  display: inline-block;
+}
+.sec3__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 4rem;
+}
+.sec3__card {
+  background: rgba(255,255,255,0.05);
+  padding: 4rem;
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 2rem rgba(0,0,0,.7);
+  transition: transform .4s;
+}
+.sec3__card:hover {
+  transform: translateY(-1rem);
+}
+/* Shine effect */
+.sec3__card::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -50%;
+  width: 50%; height: 200%;
+  background: rgba(255,255,255,0.2);
+  transform: rotate(45deg);
+}
+.sec3__card:hover::before {
+  animation: shine 1s forwards;
+}
+@keyframes shine {
+  to {
+    top: 200%;
+    left: 150%;
+  }
+}
+/* Circular progress */
+.sec3__percent {
+  position: relative;
+  width: 15rem;
+  height: 15rem;
+}
+.sec3__percent svg {
+  width: 100%; height: 100%;
+  transform: rotate(-90deg);
+}
+.sec3__percent circle {
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+.sec3__percent circle:nth-child(1) {
+  stroke: #191919;
+}
+.sec3__percent circle:nth-child(2) {
+  stroke: var(--clr-primary);
+  stroke-dasharray: 440;
+  opacity: 0.8;
+}
+/* Number inside circle */
+.number {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.number h2 {
+  font-size: 4rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 900;
+}
+.sec3__text {
+  margin-top: 2rem;
+  font-size: 2rem;
+  color: rgba(255,255,255,0.7);
+}
+
+/*=============== CONTACT Section ===============*/
+.sec4 {
+  background: var(--clr-dark-grad);
+  color: #fff;
+}
+.sec4__container {
+  padding: 0 5rem;
+}
+.sec4__box1 h2 {
+  font-size: var(--fs-h2);
+  margin-bottom: 1rem;
+  border-bottom: .2rem solid var(--clr-primary);
+}
+.sec4__content2Icon {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  font-size: 1.8rem;
+}
+.sec4__content2Icon i {
+  margin-right: 1rem;
+  color: var(--clr-primary);
+}
+.sec4__content3 a {
+  font-size: 2.4rem;
+  color: #fff;
+  margin-right: 1.5rem;
+  padding: .3rem;
+  border: .2rem solid #fff;
+  border-radius: .6rem;
+  transition: background .3s, color .3s;
+}
+.sec4__content3 a:hover {
+  background: #fff;
+  color: var(--clr-primary);
+}
+
+/*=============== FORM Styling ===============*/
+.sec4__box3 form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.sec4__box3 input,
+.sec4__box3 button {
+  font-size: 1.6rem;
+}
+.sec4__box3 input {
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 3rem;
+  box-shadow: 0 0 1rem rgba(0,0,0,.3);
+}
+.sec4__box3 button {
+  background: var(--clr-primary);
+  color: #fff;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 3rem;
+  cursor: pointer;
+  transition: background .4s, color .4s;
+}
+.sec4__box3 button:hover {
+  background: var(--clr-primary-dark);
+  color: #fff;
+}
+
+/*=============== RESPONSIVE ===============*/
+@media (max-width: 992px) {
+  .sec1__container,
+  .sec2__container,
+  .sec4__container {
+    padding: 0 3rem;
+  }
+}
+@media (max-width: 768px) {
+  .navBar__menu {
+    display: none;
+  }
+  .sec1__menuIcon {
+    display: block;
+  }
+  section {
+    padding: 5rem 0;
+  }
+}
+@media (max-width: 480px) {
+  h1 { font-size: 3.2rem; }
+  h2 { font-size: 2.4rem; }
+  .sec2__aboutme1Img {
+    width: 10rem;
+    height: 10rem;
+  }
+}
